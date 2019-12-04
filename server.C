@@ -15,11 +15,12 @@
 #include <arpa/inet.h> // defines in_addr structure
 #include <sys/socket.h> // for socket creation
 #include <netinet/in.h> //contains constants and structures needed for internet domain addresses
-
+#include "MYTASK.H"
 #include "SIMPLESOCKET.H"
 
 
 int main(){
-	TCPserver srv(2021,25);
+	//TCPserver srv(2021,25);
+	MyTCPserver srv (2021,25);
 	srv.run();
 }

@@ -26,6 +26,7 @@ using namespace std;
 
 int main(){
 	srand(time(nullptr));
+	TASK5::demoOB00();
 }
 
 
