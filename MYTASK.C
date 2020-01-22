@@ -8,34 +8,42 @@
 #include <cstring>
 #include <sstream>
 #include <iostream>
+#include <string>
+#include <sys/socket.h>
+#include <arpa/inet.h>
+#include <netdb.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <netinet/in.h>
+#include <cerrno>
+#include <ctime>
 #include "MYTASK.H"
 #include "TASK3.H"
 #include "TASK1.H"
 
-/*string MyTCPserver::myResponse(string input){
-	std::stringstream ss;
-	int x,y;
-	TASK3::ShootResult result;
+using namespace std;
+using namespace TASK1;
 
-	if(input.compare(0,6,"COORD[")== 0){
-		if (2!=sscanf(input.c_str(),"COORD[%d,%d]",&x,&y)){
+string MyTCPserver::myResponse(string input)
+{
+	int l, alphal;
+	if(input[0]=='#')
+	{
+		sscanf(input.c_str(),"#%d#%d##",&l,&alphal);
+		stringstream number;
+		number <<"#"<<l<<"#"<<alphal<<"##";
+		delete bb_;
+		bb_ =new BlackBoxSafe(l,alphal);
+		sleep(0);
+		return number.str();
 	}
-		if( (x<1)||(y<1)||(x>10)||(y>10)){
-			return string("RES[-2]");
-		}
+	sleep(0);
+	return bb_->input(input);
+}
 
-		result = (TASK3::ShootResult) (rand()%6);
-		ss<<"RES["<<result<<"]";
-		return ss.str();
-};
-	if(input.compare(0,7,"NEWGAME")==0){
-		return string ("OK");
-	};
-	return string("UNKNOWN COMMAND");
-}*/
-
+/*Versuch1:
 string MyTCPserver::myResponse(string input){
-	std::stringstream ss;
+	stringstream ss;
 	int x,y;
 
 	if (input.compare(0,3, "PW[")==0){
@@ -47,8 +55,9 @@ string MyTCPserver::myResponse(string input){
 	}
 	return ss.str();
 };
+*/
 
-
+//following code provided by Mr Hülse:
 /*string MyTCPserver::myResponse(string input){
 	std::stringstream ss;
 	int x,y;

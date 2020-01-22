@@ -8,6 +8,9 @@
 #include <string>
 #include <iostream>
 #include <unistd.h> //contains various constants
+#include <sstream>
+#include <sys/time.h>
+#include <fstream>
 
 #include "SIMPLESOCKET.H"
 
