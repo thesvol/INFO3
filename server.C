@@ -17,10 +17,14 @@
 #include <netinet/in.h> //contains constants and structures needed for internet domain addresses
 #include "MYTASK.H"
 #include "SIMPLESOCKET.H"
+#include "TASK1.H"
+
+using namespace TASK1;
 
 
 int main(){
+	srand(time(nullptr));
 	//TCPserver srv(2021,25);
-	MyTCPserver srv (2021,25);
+	MyTCPserver srv(2021,25);
 	srv.run();
 }

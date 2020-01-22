@@ -41,6 +41,11 @@ string MyTCPserver::myResponse(string input)
 	return bb_->input(input);
 }
 
+MyTCPserver::~MyTCPserver()
+{
+
+}
+
 /*Versuch1:
 string MyTCPserver::myResponse(string input){
 	stringstream ss;
